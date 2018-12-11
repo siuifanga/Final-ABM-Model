@@ -4,30 +4,34 @@ Created on Tue Nov  6 15:18:19 2018
 
 @author: Siu Pouvalu, 201205928
 """
-
-#import random
+########################################################################
+               ########### Create agent class  ##########
+########################################################################
+             
 import random 
 
- 
-  
-
-#define the agent class
+#Create an agent class which is basically the blueprint for the agents and
+#their behaviour
 class Agent(): 
-#defining the function 
-    #def __init__(self):
+#Create a function that can be called from the objects or agents
+   
     def __init__(self, environment, agents,y,x): #this gives each agent access                                        
-        self.environment = environment;         #to the env and other agents
-        self.agents = agents #this defines the agents
-        self.x = x #random.randint (0,299)
-        self.y = y #random.randint (0,299)
-        self.store = 0 #what each agent starts off with, nothing.
-        pass 
+        self.environment = environment;         ##to the env and other agents
+        self.agents = agents                     #defines the agents
+        self.x = x                               #random.randint (0,299)
+        self.y = y                               #random.randint (0,299)
+        self.store = 0                     #each agent starts with 0 or nothing
+        pass                                     ##keyword that only compiles 
+                                                 #the clauses above                                  
      
-#######################################################################
-        
+###########################################################################
+    ########### Define functions and agent behaviour ##########
+###########################################################################       
     
-#Create a method to move agents
-    def eat(self): # can you make it eat what is left?
+#Define functions or agent behaviour i.e. eat, move and share with other
+                                                 #agents
+                                                 
+    def pickfruits(self): 
         if self.environment[self.y][self.x] > 10:
             self.environment[self.y][self.x] -= 10
             self.store += 10
@@ -43,7 +47,7 @@ class Agent():
         else:
             self.y = (self.y - 1) % 300
             
-
+#
     def share_with_neighbours(self, neighbourhood):
         for agent in self.agents:
             dist = self.distance_between(agent) 
@@ -53,12 +57,13 @@ class Agent():
             self.store = ave
             agent.store = ave
             #print("sharing " + str(dist) + " " + str(ave))
-
+            
+#Calculate the distance between agents
     def distance_between(self, agent):
         return (((self.x - agent.x)**2) + ((self.y - agent.y)**2))**0.5
         
             
         
-
+  
 
  
