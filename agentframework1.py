@@ -18,8 +18,8 @@ class Agent():
     def __init__(self, environment, agents,y,x): #this gives each agent access                                        
         self.environment = environment;         ##to the env and other agents
         self.agents = agents                     #defines the agents
-        self.x = x                               #random.randint (0,299)
-        self.y = y                               #random.randint (0,299)
+        self.x = x                               #random.randint (0,100)
+        self.y = y                               #random.randint (0,100)
         self.store = 0                     #each agent starts with 0 or nothing
         pass                                     ##keyword that only compiles 
                                                  #the clauses above                                  
@@ -31,7 +31,7 @@ class Agent():
 #Define functions or agent behaviour i.e. eat, move and share with other
                                                  #agents
                                                  
-    def pickfruits(self): 
+    def eat(self): 
         if self.environment[self.y][self.x] > 10:
             self.environment[self.y][self.x] -= 10
             self.store += 10
